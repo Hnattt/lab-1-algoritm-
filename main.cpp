@@ -5,20 +5,22 @@ using namespace std;
 
 double y(double x, int n) {
     double result = 0;
+
     if (x < 0) {
         result = 1;
-        for (int j = 2; j <= n - 1; ++j) { 
+        for (int j = 2; j <= n - 2; ++j) { 
             result *= (j + x);
         }
     } else {
-        for (int i = 0; i < n; ++i) { 
+        for (int i = 0; i <= n - 1; ++i) { 
             double prod = 1;
-            for (int j = 0; j < n; ++j) { 
+            for (int j = 0; j <= n - 1; ++j) {  
                 prod *= (x + i + pow(j, 2));
             }
             result += prod;
         }
     }
+
     return result;
 }
 
@@ -37,10 +39,10 @@ int main() {
     double start, end, step;
     int n;
     read_input(start, end, step, n);
-    
+
     for (double x = start; x <= end; x += step) {
         cout << "y(" << x << ", " << n << ") = " << y(x, n) << endl;
     }
-    
+
     return 0;
 }
